@@ -12,17 +12,17 @@
     <link rel="stylesheet" type="text/css" href="/static/css/fullpage/jquery.fullPage.css">
     <style type="text/css">
     .section1{
-    	background-image: url(/static/image/full-page-effect/pic1.jpg);
-    	background-size: 100% 100%;
-    	position: relative;
+        background-image: url(/static/image/full-page-effect/pic1.jpg);
+        background-size: 100% 100%;
+        position: relative;
         text-align: center;
     }
     .next-page{
-    	position: absolute;
-    	left: 48%;
-    	bottom: 3%;
-    	font-size: 14px;
-    	color: #ffffff;
+        position: absolute;
+        left: 48%;
+        bottom: 3%;
+        font-size: 14px;
+        color: #ffffff;
         font-size: 35px;
         -webkit-animation: next-page 2s infinite;
                 animation: next-page 2s infinite;
@@ -734,14 +734,14 @@
 
 
         // 全屏滑动插件
-    	$('#fullpage').fullpage({
-	        scrollingSpeed: 700,
-	        easing: 'easeOutExpo',
-	        navigation: false,
-	        onLeave: function(index, nextIndex, direction){
+        $('#fullpage').fullpage({
+            scrollingSpeed: 700,
+            easing: 'easeOutExpo',
+            navigation: false,
+            onLeave: function(index, nextIndex, direction){
                 pageTransform(nextIndex);
-	        }
-	    });
+            }
+        });
 
 
         // 左右滑动
@@ -850,7 +850,7 @@
             </div>
             <span class="desc-border"></span>
         </div>
-		<span class="next-page"><i class="fa fa-angle-double-up"></i></span>
+        <span class="next-page"><i class="fa fa-angle-double-up"></i></span>
     </div>
 
     <div class="section section2">
