@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    .effect{
+    	font-size: 60px;
+    	display: inline-block;
+    }
+
+    .fade-in{
+    	-webkit-animation: fade-in 0.5s;
+    	animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes fade-in{
+    	0%{
+    		opacity: 0;
+    		-webkit-filter: blur(20px);
+    		transform: scale(1.8);
+    	}
+    	100%{
+    		opacity: 1;
+    		-webkit-filter: blur(0);
+    		transform: scale(1);
+    	}
+    }
+    .fade-out{
+    	-webkit-animation: fade-out 0.5s;
+    	animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes fade-out{
+    	0%{
+    		opacity: 1;
+    		-webkit-filter: blur(0);
+    		transform: scale(1);
+    	}
+    	100%{
+    		opacity: 0;
+    		-webkit-filter: blur(20px);
+    		transform: scale(1.8);
+    	}
+    }
+    .skew-in{
+    	-webkit-animation: skew-in 1.0s;
+    	animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes skew-in{
+    	0%{
+    		opacity: 0;
+    		transform: skewX(30deg) translateX(-300%);
+    	}
+    	85%{
+    		opacity: 1;
+    		transform: skewX(-20deg);
+    	}
+    	100%{
+    		opacity: 1;
+    		transform: skewX(0) translateX(0);
+    	}
+    }
+
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+    	$('.btn-fade-in').on('click', function(){
+    		$('.effect').removeClass('fade-in fade-out skew-in skew-out').addClass('fade-in');
+    	});
+
+    	$('.btn-fade-out').on('click', function(){
+    		$('.effect').removeClass('fade-in fade-out skew-in skew-out').addClass('fade-out');
+    	});
+
+    	$('.btn-skew-in').on('click', function(){
+    		$('.effect').removeClass('fade-in fade-out skew-in skew-out').addClass('skew-in');
+    	});
+    });
+	</script>
+</head>
+<body>
+	<div class="container text-center" style="padding-top: 150px;">
+		<div>
+			<span class="effect">
+				效果
+			</span>
+		</div>
+		<div style="padding-top: 50px;">
+			<a href="#" class="btn btn-primary btn-fade-in">淡入</a>
+			<a href="#" class="btn btn-danger btn-fade-out">淡出</a>
+			<a href="#" class="btn btn-warning btn-skew-in">跑出来</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -4,12 +4,76 @@
 		"selected_items":
 		[
 			[
+				"c",
+				"class	Attr"
+			],
+			[
+				"alert-con",
+				"alert-content-show"
+			],
+			[
+				"al",
+				"alert-icon-show"
+			],
+			[
+				"an",
+				"animationText"
+			],
+			[
+				"anim",
+				"animation"
+			],
+			[
+				"ico",
+				"icons"
+			],
+			[
 				"ba",
 				"background-color"
 			],
 			[
+				"wi",
+				"width"
+			],
+			[
+				"m",
+				"message"
+			],
+			[
+				"g",
+				"global-alert"
+			],
+			[
+				"h",
+				"hidden"
+			],
+			[
+				"v",
+				"visibility"
+			],
+			[
 				"pa",
-				"padding-top"
+				"padding-right"
+			],
+			[
+				"t",
+				"table-cell"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"co",
+				"color"
 			],
 			[
 				"fon",
@@ -56,10 +120,10 @@
 	"buffers":
 	[
 		{
-			"file": "templates/full-page-effect.html",
+			"file": "static/alert.html",
 			"settings":
 			{
-				"buffer_size": 33847,
+				"buffer_size": 11317,
 				"line_ending": "Unix"
 			}
 		}
@@ -98,10 +162,19 @@
 	[
 		"/Users/stranger/workspace/html-effect/htmleffect",
 		"/Users/stranger/workspace/html-effect/htmleffect/htmleffect",
+		"/Users/stranger/workspace/html-effect/htmleffect/static",
+		"/Users/stranger/workspace/html-effect/htmleffect/static/css",
 		"/Users/stranger/workspace/html-effect/htmleffect/templates"
 	],
 	"file_history":
 	[
+		"/Users/stranger/workspace/html-effect/htmleffect/htmleffect/urls.py",
+		"/Users/stranger/workspace/html-effect/htmleffect/static/loading.html",
+		"/Users/stranger/workspace/html-effect/htmleffect/static/fade-text.html",
+		"/Users/stranger/workspace/html-effect/htmleffect/static/full-page-effect.html",
+		"/Users/stranger/workspace/html-effect/htmleffect/templates/loading.html",
+		"/Users/stranger/workspace/html-effect/htmleffect/templates/full-page-effect.html",
+		"/Users/stranger/workspace/html-effect/htmleffect/templates/alert.html",
 		"/Users/stranger/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
 		"/Users/stranger/workspace/aoaoxc/www/cash/interface.py",
 		"/Users/stranger/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
@@ -124,6 +197,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"/static/",
 			"B7"
 		],
 		"highlight": true,
@@ -132,6 +206,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			""
 		],
 		"reverse": false,
 		"show_context": true,
@@ -147,19 +222,19 @@
 			[
 				{
 					"buffer": 0,
-					"file": "templates/full-page-effect.html",
-					"semi_transient": true,
+					"file": "static/alert.html",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 33847,
+						"buffer_size": 11317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2967,
-								2967
+								760,
+								760
 							]
 						],
 						"settings":
@@ -169,7 +244,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1490.0,
+						"translation.y": 475.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -217,7 +292,7 @@
 	"project": "htmleffect.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

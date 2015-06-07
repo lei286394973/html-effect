@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    body{
+        /*background-color: #00A2D3;*/
+    }
+
+    .alert-box{
+    	position: fixed;
+    	width: 370px;
+    	height: 60px;
+        z-index: 1001;
+    }
+
+    .alert-icon{
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        z-index: 1002;
+        left: 0;
+        top: 0;
+    }
+    .alert-icon-show{
+        -webkit-animation: alert-icon-show 1s linear;
+    }
+    @-webkit-keyframes alert-icon-show{
+        0%{transform: scale(0.6); opacity: 0}
+        1.5625%{transform: scale(1.0146268454015188)}
+        4.6875%{transform: scale(1.1248641862759687)}
+        7.8125%{transform: scale(1.1485933766159877)}
+        10.9375%{transform: scale(1.1142840847314284)}
+        14.0625%{transform: scale(1.0227260640245246)}
+        17.1875%{transform: scale(0.9752487274832381)}
+        20.3125%{transform: scale(0.9501991623537094)}
+        23.4375%{transform: scale(0.9507316194575273)}
+        26.5625%{transform: scale(0.9700971316579398)}
+        29.6875%{transform: scale(0.9919651230092895); opacity: 1;}
+        32.8125%{transform: scale(1.0087508963197993)}
+        35.9375%{transform: scale(1.0184425039948526)}
+        39.0625%{transform: scale(1.016823838714096)}
+        42.1875%{transform: scale(1.0103071351459363)}
+        45.3125%{transform: scale(1.0018528897495742)}
+        48.4375%{transform: scale(0.9964293606229573)}
+        51.5625%{transform: scale(0.9936368923643235)}
+        54.6875%{transform: scale(0.9937945331634889)}
+        57.8125%{transform: scale(0.9958929625476627)}
+        60.9375%{transform: scale(0.9986344985992155)}
+        64.0625%{transform: scale(1.0009132642008964)}
+        67.1875%{transform: scale(1.0021172798543025)}
+        70.3125%{transform: scale(1.0022751020020522)}
+        73.4375%{transform: scale(1.001639622793856)}
+        76.5625%{transform: scale(1.000713933908902)}
+        79.6875%{transform: scale(0.9998420327812323)}
+        82.8125%{transform: scale(0.9993217260256562)}
+        85.9375%{transform: scale(0.9991776616496452)}
+        89.0625%{transform: scale(0.9993686636617556)}
+        92.1875%{transform: scale(0.9996878678849579)}
+        95.3125%{transform: scale(1.0000096612672635)}
+        98.4375%{transform: scale(1)}
+        100%{transform: scale(1)}
+    }
+    .alert-icon-hide{
+        -webkit-animation: alert-icon-hide 0.5s linear;
+    }
+    @-webkit-keyframes alert-icon-hide{
+        0%{transform: scale(1); opacity: 1}
+        1.5625%{transform: scale(1.005635321823232)}
+        4.6875%{transform: scale(1.013589975530206)}
+        7.8125%{transform: scale(1.023630387571738)}
+        10.9375%{transform: scale(1.032933424034944)}
+        14.0625%{transform: scale(1.052065682735104)}
+        17.1875%{transform: scale(1.060485844413862)}
+        20.3125%{transform: scale(1.068663118485934)}
+        23.4375%{transform: scale(1.07595912584575)}
+        26.5625%{transform: scale(1.081860258567664)}
+        29.6875%{transform: scale(1.0864928532340001)}
+        32.8125%{transform: scale(1.089294876233776)}
+        35.9375%{transform: scale(1.089946080112528)}
+        39.0625%{transform: scale(1.088126217415792)}
+        42.1875%{transform: scale(1.083515040689104)}
+        45.3125%{transform: scale(1.075454923246318)}
+        48.4375%{transform: scale(1.064171888547382)}
+        51.5625%{transform: scale(1.049125360046014);opacity: 1;}
+        54.6875%{transform: scale(1.0299950902877502)}
+        57.8125%{transform: scale(1.006460831818126)}
+        60.9375%{transform: scale(0.975994637588506)}
+        64.0625%{transform: scale(0.9436126504960002)}
+        67.1875%{transform: scale(0.9017571507580001)}
+        70.3125%{transform: scale(0.8550601102701821)}
+        73.4375%{transform: scale(0.8038181643512139)}
+        76.5625%{transform: scale(0.74620499535775)}
+        79.6875%{transform: scale(0.6843157837913441)}
+        82.8125%{transform: scale(0.6079032854122242)}
+        85.9375%{transform: scale(0.5289871836160001)}
+        89.0625%{transform: scale(0.44240743151833617)}
+        92.1875%{transform: scale(0.3372250860729825)}
+        95.3125%{transform: scale(0.2295840245800964)}
+        98.4375%{transform: scale(0.11683363810700809)}
+        100%{transform: scale(0.1978495628736071); opacity: 0;}
+    }
+    
+    .alert-icon-success{
+        background-color: #42CA99;
+    }
+    .alert-icon-success>i{
+        position: absolute;
+        font-size: 30px;
+        left: 15px;
+        top: 15px;
+        color: white;
+    }
+    .alert-icon-error{
+        background-color: #D13737;
+    }
+    .alert-icon-error>i{
+        position: absolute;
+        font-size: 30px;
+        left: 17px;
+        top: 15px;
+        color: white;
+    }
+    .alert-icon-info{
+        background-color: #00A2D3;
+    }
+    .alert-icon-info>i{
+        position: absolute;
+        font-size: 30px;
+        left: 17px;
+        top: 15px;
+        color: white;
+    }
+    .alert-icon-warning{
+        background-color: #CBA22C;
+    }
+    .alert-icon-warning>i{
+        position: absolute;
+        font-size: 30px;
+        left: 15px;
+        top: 15px;
+        color: white;
+    }
+    
+    .alert-content{
+        
+        height: 60px;
+        display: table-cell;
+        vertical-align: middle;
+        width: 370px;
+        background-color: #ffffff;
+        border: 1px solid #dddddd;
+        
+        /*display: none;*/
+    }
+    .alert-content-show{
+        -webkit-animation: alert-content-show 0.6s;
+    }
+    @-webkit-keyframes alert-content-show{
+        0%{
+            opacity: 0;
+            width: 60px;
+        }
+        50%{
+            opacity: 1;
+            width: 60px;
+        }
+        100%{
+            opacity: 1;
+            width: 370px;
+        }
+    }
+    .alert-content-hide{
+        -webkit-animation: alert-content-hide 0.6s;
+    }
+    @-webkit-keyframes alert-content-hide{
+        0%{
+            width: 370px;
+        }
+        50%{
+            width: 370px;
+        }
+        100%{
+            width: 0px;
+        }
+    }
+
+    .alert-text{
+        display: none;
+        padding-left: 80px;
+        padding-right: 20px;
+    }
+
+    </style>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $.MSG = {};
+
+        $.MSG.Alert = function(message, icon, closeSeconds){
+            var alertTextInterval = null,
+                alertContentInterval = null,
+                alertIconInterval = null,
+                ICONS = {
+                    'info': 'fa-exclamation-circle',
+                    'success': 'fa-check',
+                    'warning': 'fa-exclamation-triangle',
+                    'error': 'fa-minus-circle',
+                },
+                html = [
+                    '<div id="global-alert" class="alert-box">',
+                        '<div class="alert-icon alert-icon-'+icon+'">',
+                            '<i class="fa '+ICONS[icon]+'"></i>',
+                        '</div>',
+                        '<div class="alert-content">',
+                            '<div class="alert-text">',
+                                message,
+                            '</div>',
+                        '</div>',
+                    '</div>',
+                ].join(''),
+                showAlert = function(){
+                    // 调整位置
+                    $('#global-alert').css({
+                        top: 50, 
+                        left: ($(window).width() - $('#global-alert').width()) / 2
+                    });
+
+                    $('.alert-icon').addClass('alert-icon-show');
+                    $('.alert-content').addClass('alert-content-show');
+
+                    // var animationText = [], count = 0, frame = 0;
+                    // jQuery({p: 1}).animate({p: 0.1}, {
+                    //     duration: 1000,
+                    //     easing: 'easeInBack',
+                    //     step: function(now, tween) {
+                    //         count += 1;
+                    //         if(count%2 == 0){
+                    //             animationText.push('<div>'+frame+'%{transform: scale('+now+')}</div>');
+                    //         }
+                    //         frame += 100/64;
+                    //     },
+                    //     complete: function(){
+                    //          //to do...
+                    //          $('#animation').html(animationText.join(''));
+                    //     }
+                    // });
+
+                    alertTextInterval = window.setTimeout(function(){
+                        $('.alert-text').fadeIn();
+                    }, 610);
+                },
+                hideAlert = function(){
+                    $('.alert-text').fadeOut();
+                    $('.alert-content').removeClass('alert-content-show').addClass('alert-content-hide');
+                    alertContentInterval = window.setTimeout(function(){
+                        $('.alert-content').hide();
+                        $('.alert-icon').removeClass('alert-icon-show').addClass('alert-icon-hide');
+                    }, 590);
+                    alertIconInterval = window.setTimeout(function(){
+                        $('.alert-icon').hide();
+                    }, 1000);
+                };
+
+            if(alertTextInterval){
+                window.clearTimeout(alertTextInterval);
+            }
+            if(alertContentInterval){
+                window.clearTimeout(alertContentInterval);
+            }
+            if(alertIconInterval){
+                window.clearTimeout(alertIconInterval);
+            }
+            $('#global-alert').remove();
+            $('body').append(html);
+            showAlert();
+
+            if(closeSeconds){
+                window.setTimeout(hideAlert, closeSeconds);
+            }
+            
+        };
+
+        $.MSG.SuccessAlert = function(message){
+            $.MSG.Alert(message, 'success', 4000);
+        };
+        $.MSG.ErrorAlert = function(message){
+            $.MSG.Alert(message, 'error');
+        };
+        $.MSG.InfoAlert = function(message){
+            $.MSG.Alert(message, 'info', 4000);
+        };
+        $.MSG.WarningAlert = function(message){
+            $.MSG.Alert(message, 'warning');
+        };
+
+
+
+
+
+        $('.btn-info').on('click', function(){$.MSG.InfoAlert('提示: 点此处有惊喜!');});
+        $('.btn-warning').on('click', function(){$.MSG.WarningAlert('警告！您的余额不足.');});
+        $('.btn-success').on('click', function(){$.MSG.SuccessAlert('提交成功！稍后客服将与你联系卖车事宜.');});
+        $('.btn-danger').on('click', function(){$.MSG.ErrorAlert('操作失败！请联系管理员.');});
+    });
+    </script>
+</head>
+<body>
+
+<a class="btn btn-info">提示信息</a>
+<a class="btn btn-warning">警告信息</a>
+<a class="btn btn-success">成功信息</a>
+<a class="btn btn-danger">错误信息</a>
+<div id="animation"></div>
+</body>
+</html>

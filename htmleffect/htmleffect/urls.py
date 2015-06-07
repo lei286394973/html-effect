@@ -20,7 +20,4 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^full_page_effect', 'htmleffect.views.full_page_effect'),
-    url(r'^fade_text', 'htmleffect.views.fade_text'),
-    url(r'^loading', 'htmleffect.views.loading'),
 ]
