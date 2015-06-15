@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    .text{
+        font-size: 40px;
+        display: inline-block;
+        transition: all 0.3s;
+    }
+
+    .rotate-x{
+        transform: rotateX(90deg);
+    }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var TEXT = "这是测试的文本!".split("");
+        $.map(TEXT, function(i){
+            $('.container').append('<span class="text">'+i+'</span>');
+        });
+
+        var t1 = function(){
+            var targets = $(".container span");
+            $.each(targets, function(i){
+                window.setTimeout(function(){
+                    targets.eq(i).addClass('rotate-x');
+                }, 50*i);
+            });
+        }
+
+        var t2 = function(){
+            var targets = $(".container span");
+            $.each(targets, function(i){
+                window.setTimeout(function(){
+                    targets.eq(i).removeClass('rotate-x');
+                }, 50*i);
+            });
+        }
+
+        t1();
+        window.setTimeout(function(){
+            t2();
+        }, TEXT.length * 200);
+
+    });
+    </script>
+</head>
+<body>
+    <div class="container text-center" style="padding-top: 150px;">
+        
+    </div>
+</body>
+</html>
