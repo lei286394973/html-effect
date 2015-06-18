@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    .btn-wave{
+        position: relative;
+        overflow: hidden;
+    }
+    .wave{
+        display: inline-block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background-color: #fff;
+        border-radius: 50%;
+        opacity: 0.5;
+        -webkit-animation: wave 1.2s;
+           -moz-animation: wave 1.2s;
+            -ms-animation: wave 1.2s;
+                animation: wave 1.2s;
+        -webkit-animation-fill-mode: forwards;
+           -moz-animation-fill-mode: forwards;
+            -ms-animation-fill-mode: forwards;
+                animation-fill-mode: forwards;
+    }
+    @-webkit-keyframes wave{
+        0%{
+            opacity: 0.5;
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+        }
+        100%{
+            opacity: 0;
+            -webkit-transform: scale(8);
+               -moz-transform: scale(8);
+                -ms-transform: scale(8);
+                    transform: scale(8);
+        }
+    }
+    @keyframes wave{
+        0%{
+            opacity: 0.5;
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+        }
+        100%{
+            opacity: 0;
+            -webkit-transform: scale(8);
+               -moz-transform: scale(8);
+                -ms-transform: scale(8);
+                    transform: scale(8);
+        }
+    }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.btn-wave').on('mousedown', function(e){
+            var e = e || window.event,
+                offset = $(this).offset(),
+                left = e.pageX - offset.left - 20,
+                top = e.pageY - offset.top - 20,
+                target = $('<span class="wave" style="left: '+left+'px; top: '+top+'px"></span>').appendTo($(this));
+            
+            target.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $(this).remove();
+            });
+
+        });
+    });
+    </script>
+</head>
+<body>
+    <div class="container text-center" style="padding-top: 150px;">
+        <a href="#" class="btn btn-primary btn-lg btn-wave">
+        测 试 按 钮 看 看 效 果
+        </a>
+        <a href="#" class="btn btn-danger btn-lg btn-wave">
+        测 试 按 钮 看 看 效 果
+        </a>
+    </div>
+</body>
+</html>
