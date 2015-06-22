@@ -9,6 +9,14 @@
     <title>alert</title>
 
     <style type="text/css">
+    .btn-primary:hover{
+        background-color: #337ab7;
+    }
+
+    .btn-danger:hover{
+        background-color: #d9534f;
+    }
+
     .btn-wave{
         position: relative;
         overflow: hidden;
@@ -64,6 +72,45 @@
                     transform: scale(8);
         }
     }
+
+
+
+
+
+
+    .btn-flash{
+        border-radius: 0px;
+        overflow: hidden;
+        border: 0;
+        position: relative;
+    }
+    .btn-flash:hover::before{
+        visibility: visible;
+        -webkit-transform: rotateZ(-20deg) translateX(150px);
+           -moz-transform: rotateZ(-20deg) translateX(150px);
+            -ms-transform: rotateZ(-20deg) translateX(150px);
+                transform: rotateZ(-20deg) translateX(150px);
+    }
+    .btn-flash::before{
+        content: "";
+        opacity: 0.7;
+        width: 40px;
+        height: 100px;
+        display: inline-block;
+        position: absolute;
+        left: 20px;
+        top: -20px;
+        -webkit-transition: all 0.5s;
+           -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+                transition: all 0.5s;
+        -webkit-transform: rotateZ(-20deg) translateX(-60px);
+           -moz-transform: rotateZ(-20deg) translateX(-60px);
+            -ms-transform: rotateZ(-20deg) translateX(-60px);
+                transform: rotateZ(-20deg) translateX(-60px);
+        background-color: #fff;
+        visibility: hidden;
+    }
     </style>
 
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
@@ -71,6 +118,8 @@
     <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
+
+        // 点击按钮效果
         $('.btn-wave').on('mousedown', function(e){
             var e = e || window.event,
                 offset = $(this).offset(),
@@ -81,19 +130,36 @@
             target.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                 $(this).remove();
             });
-
         });
+
+        // 鼠标移动效果
+
     });
     </script>
 </head>
 <body>
     <div class="container text-center" style="padding-top: 150px;">
         <a href="#" class="btn btn-primary btn-lg btn-wave">
-        测 试 按 钮 看 看 效 果
+        测 试 按 钮 点 击 看 看
         </a>
         <a href="#" class="btn btn-danger btn-lg btn-wave">
-        测 试 按 钮 看 看 效 果
+        测 试 按 钮 点 击 看 看
         </a>
+    </div>
+
+    <div class="container text-center" style="padding-top: 150px;">
+        <div class="row">
+            <div class="col-md-2 col-md-offset-4">
+                <a href="#" class="btn btn-primary btn-block btn-flash">
+                BUTTON
+                </a>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="btn btn-danger btn-block btn-flash">
+                BUTTON
+                </a>
+            </div>
+        </div>
     </div>
 </body>
 </html>
