@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    body{
+        font-family: 'Lantinghei SC', 'Open Sans', Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, STHeiti, 'WenQuanYi Micro Hei', SimSun, sans-serif;
+    }
+    .container-fluid{
+        background-color: #dddddd;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .slides{
+        min-height: 500px;
+        position: relative;
+    }
+    .slides>li{
+        visibility: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .slides>li.active,
+    .slides>li.s-hide{
+        visibility: visible;
+    }
+    .slide-item{
+        -webkit-perspective: 1600px;
+                perspective: 1600px;
+    }
+    .slide-text{
+        position: relative;
+        z-index: 100;
+        padding-left: 0;
+        -webkit-transition: all 0.75s;
+                transition: all 0.75s;
+        opacity: 0;
+    }
+    .slides>li.active .slide-text{
+        opacity: 1;
+    }
+    .slide-title{
+        font-size: 42px;
+        font-weight: bold;
+        padding-top: 90px;
+        padding-left: 70px;
+        padding-bottom: 40px;
+    }
+    .slide-desc{
+        font-size: 20px;
+        padding-left: 70px;
+        padding-bottom: 50px;
+    }
+    .slide-imgs{
+        position: absolute;
+        left: 47%;
+        width: 50%;
+        top: 50%;
+        z-index: 99;
+        padding-right: 0;
+        padding-left: 0;
+        -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+        -webkit-transform: translateY(-42%) rotateX(60deg) rotateZ(35deg);
+                transform: translateY(-42%) rotateX(60deg) rotateZ(35deg);
+    }
+    .slides>li.s-show .slide-imgs{
+        opacity: 0;
+    }
+    .slide-img-v{
+        width: 100%;
+        padding-bottom: 30px;
+    }
+    .slide-img-h{
+        width: 49%;
+        padding-left: 15px;
+    }
+    .slide-nav{
+        margin-top: -35px;
+    }
+    .slide-nav-item{
+        display: inline-block;
+        width: 60px;
+        height: 5px;
+        background-color: #bbb;
+        cursor: pointer;
+        margin: 0 3px;
+        -webkit-transition: background-color 0.3s;
+                transition: background-color 0.3s;
+    }
+    .slide-nav-item.active,
+    .slide-nav-item:hover{
+        background-color: #333;
+    }
+
+    /*
+        动画效果
+    */
+    .move-up-out{
+        -webkit-animation: moveUpOut 1.5s both;
+                animation: moveUpOut 1.5s both;
+    }
+    @-webkit-keyframes moveUpOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(-30px);
+        }
+        100% {
+            -webkit-transform: translateZ(3000px);
+        }
+    }
+    @keyframes moveUpOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(-30px);
+                    transform: translateZ(-30px);
+        }
+        100% {
+            -webkit-transform: translateZ(3000px);
+                    transform: translateZ(3000px);
+        }
+    }
+    .move-up-in{
+        -webkit-animation: moveUpIn 1.5s both;
+                animation: moveUpIn 1.5s both;
+    }
+    @-webkit-keyframes moveUpIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(-3000px);
+        }
+        75% {
+            -webkit-transform: translateZ(30px);
+        }
+        100% {
+            -webkit-transform: translateZ(0);
+        }
+    }
+    @keyframes moveUpIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(-3000px);
+                    transform: translateZ(-3000px);
+        }
+        75% {
+            -webkit-transform: translateZ(30px);
+                    transform: translateZ(30px);
+        }
+        100% {
+            -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+        }
+    }
+    .move-down-out{
+        -webkit-animation: moveDownOut 1.5s both;
+                animation: moveDownOut 1.5s both;
+    }
+    @-webkit-keyframes moveDownOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(30px);
+        }
+        100% {
+            -webkit-transform: translateZ(-3000px);
+        }
+    }
+    @keyframes moveDownOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(30px);
+                    transform: translateZ(30px);
+        }
+        100% {
+            -webkit-transform: translateZ(-3000px);
+        }
+    }
+    .move-down-in{
+        -webkit-animation: moveDownIn 1.5s both;
+                animation: moveDownIn 1.5s both;
+    }
+    @-webkit-keyframes moveDownIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(3000px);
+        }
+        75% {
+            -webkit-transform: translateZ(-30px);
+        }
+        100% {
+            -webkit-transform: translateZ(0);
+        }
+    }
+    @keyframes moveDownIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateZ(3000px);
+                    transform: translateZ(3000px);
+        }
+        75% {
+            -webkit-transform: translateZ(-30px);
+                    transform: translateZ(-30px);
+        }
+        100% {
+            -webkit-transform: translateZ(0);
+                    transform: translateZ(0);
+        }
+    }
+    .slide-up-out{
+        -webkit-animation: slideUpOut 1.5s both;
+                animation: slideUpOut 1.5s both;
+    }
+    @-webkit-keyframes slideUpOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(30px);
+        }
+        100% {
+            -webkit-transform: translateY(-3000px);
+        }
+    }
+    @keyframes slideUpOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(30px);
+                    transform: translateY(30px);
+        }
+        100% {
+            -webkit-transform: translateY(-3000px);
+                    transform: translateY(-3000px);
+        }
+    }
+    .slide-up-in{
+        -webkit-animation: slideUpIn 1.5s both;
+                animation: slideUpIn 1.5s both;
+    }
+    @-webkit-keyframes slideUpIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(3000px);
+        }
+        75% {
+            -webkit-transform: translateY(-30px);
+        }
+        100% {
+            -webkit-transform: translateY(0);
+        }
+    }
+    @keyframes slideUpIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(3000px);
+                    transform: translateY(3000px);
+        }
+        75% {
+            -webkit-transform: translateY(-30px);
+                    transform: translateY(-30px);
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+        }
+    }
+    .slide-down-out{
+        -webkit-animation: slideDownOut 1.5s both;
+                animation: slideDownOut 1.5s both;
+    }
+    @-webkit-keyframes slideDownOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(-30px);
+        }
+        100% {
+            -webkit-transform: translateY(3000px);
+        }
+    }
+    @keyframes slideDownOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(-30px);
+                    transform: translateY(-30px);
+        }
+        100% {
+            -webkit-transform: translateY(3000px);
+                    transform: translateY(3000px);
+        }
+    }
+    .slide-down-in{
+        -webkit-animation: slideDownIn 1.5s both;
+                animation: slideDownIn 1.5s both;
+    }
+    @-webkit-keyframes slideDownIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(-3000px);
+        }
+        75% {
+            -webkit-transform: translateY(30px);
+        }
+        100% {
+            -webkit-transform: translateY(0);
+        }
+    }
+    @keyframes slideDownIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateY(-3000px);
+                    transform: translateY(-3000px);
+        }
+        75% {
+            -webkit-transform: translateY(30px);
+                    transform: translateY(30px);
+        }
+        100% {
+            -webkit-transform: translateY(0);
+                    transform: translateY(0);
+        }
+    }
+    .slide-left-out{
+        -webkit-animation: slideLeftOut 1.5s both;
+                animation: slideLeftOut 1.5s both;
+    }
+    @-webkit-keyframes slideLeftOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(30px);
+        }
+        100% {
+            -webkit-transform: translateX(-5000px);
+        }
+    }
+    @keyframes slideLeftOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(30px);
+                    transform: translateX(30px);
+        }
+        100% {
+            -webkit-transform: translateX(-5000px);
+                    transform: translateX(-5000px);
+        }
+    }
+    .slide-left-in{
+        -webkit-animation: slideLeftIn 1.5s both;
+                animation: slideLeftIn 1.5s both;
+    }
+    @-webkit-keyframes slideLeftIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(3000px);
+        }
+        75% {
+            -webkit-transform: translateX(-30px);
+        }
+        100% {
+            -webkit-transform: translateX(0);
+        }
+    }
+    @keyframes slideLeftIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(3000px);
+                    transform: translateX(3000px);
+        }
+        75% {
+            -webkit-transform: translateX(-30px);
+                    transform: translateX(-30px);
+        }
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+    }
+    .slide-right-out{
+        -webkit-animation: slideRightOut 1.5s both;
+                animation: slideRightOut 1.5s both;
+    }
+    @-webkit-keyframes slideRightOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(-30px);
+        }
+        100% {
+            -webkit-transform: translateX(3000px);
+        }
+    }
+    @keyframes slideRightOut {
+        25% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(-30px);
+                    transform: translateX(-30px);
+        }
+        100% {
+            -webkit-transform: translateX(3000px);
+                    transform: translateX(3000px);
+        }
+    }
+    .slide-right-in{
+        -webkit-animation: slideRightIn 1.5s both;
+                animation: slideRightIn 1.5s both;
+    }
+    @-webkit-keyframes slideRightIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(-5000px);
+        }
+        75% {
+            -webkit-transform: translateX(30px);
+        }
+        100% {
+            -webkit-transform: translateX(0);
+        }
+    }
+    @keyframes slideRightIn {
+        0% {
+            -webkit-animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+                    animation-timing-function: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+            -webkit-transform: translateX(-5000px);
+                    transform: translateX(-5000px);
+        }
+        75% {
+            -webkit-transform: translateX(30px);
+                    transform: translateX(30px);
+        }
+        100% {
+            -webkit-transform: translateX(0);
+                    transform: translateX(0);
+        }
+    }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        var transform = function(index){
+            var OUT_EFFECTS = {
+                    0: 'move-up-out',
+                    1: 'move-down-out',
+                    2: 'slide-up-out',
+                    3: 'slide-down-out',
+                    4: 'slide-left-out',
+                    5: 'slide-right-out'
+                },
+                IN_EFFECTS = {
+                    0: 'move-up-in',
+                    1: 'move-down-in',
+                    2: 'slide-up-in',
+                    3: 'slide-down-in',
+                    4: 'slide-left-in',
+                    5: 'slide-right-in'
+                },
+                getOutEffect = function(){
+                    return OUT_EFFECTS[Math.round(Math.random() * 5)];
+                },
+                getInEffect = function(){
+                    return IN_EFFECTS[Math.round(Math.random() * 5)];
+                },
+                outEffect = getOutEffect(),
+                inEffect = getInEffect(),
+                prev = $('.slides>li.active'),
+                next = $('.slides>li').eq(index);
+
+            // outEffect = "slide-down-out";
+            // inEffect = "slide-right-in";
+
+            // 纠正下效果
+            if([1, 3, 5].indexOf(index) > -1){
+                outEffect = (outEffect == "slide-down-out") ? "slide-up-out" : outEffect;
+                outEffect = (outEffect == "slide-right-out") ? "slide-left-out" : outEffect;
+                inEffect = (inEffect == "slide-right-in") ? "slide-left-in" : inEffect;
+                inEffect = (inEffect == "slide-down-in") ? "slide-up-in" : inEffect;
+            }
+
+            prev.removeClass('active');
+            prev.addClass('s-hide');
+            prev.find('img').eq(0).addClass(outEffect);
+            window.setTimeout(function(){
+                prev.find('img').eq(1).addClass(outEffect);
+            }, 250);
+            window.setTimeout(function(){
+                prev.removeClass('s-hide');
+                prev.find('img').eq(0).removeClass(outEffect);
+                prev.find('img').eq(1).removeClass(outEffect);
+            }, 1750);
+
+            next.addClass('active s-show');
+            window.setTimeout(function(){
+                next.find('img').eq(0).addClass(inEffect);
+            }, 800);
+            window.setTimeout(function(){
+                next.removeClass('s-show');
+                next.find('img').eq(1).addClass(inEffect);
+            }, 1050);
+            window.setTimeout(function(){
+                next.find('img').eq(0).removeClass(inEffect);
+                next.find('img').eq(1).removeClass(inEffect);
+            }, 2550);
+        };
+
+        // 导航事件
+        $('.slide-nav-item').on('click', function(){
+            var target = $(this);
+
+            if(target.hasClass('active')){
+                return;
+            }
+
+            $('.slide-nav-item.active').removeClass('active');
+            target.addClass('active');
+            transform(parseInt(target.data('index')));
+        });
+
+    });
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <ul class="list-unstyled slides">
+            <li class="active">
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">Tilted Content Slideshow</div>
+                        <div class="slide-desc">This slider, as seen on the landing page of the FWA, plays with 3D perspective and performs some interesting animations on the right-hand side images.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-v" src="image/slide-show/1.jpg">
+                        <img class="slide-img-v" src="image/slide-show/2.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">CSS Animations</div>
+                        <div class="slide-desc">We are using 12 different animations for showing and hiding the items of a slide. The animations are defined by randomly adding data-attributes called data-effect-in and data-effect-out for every slide.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-h" src="image/slide-show/3.jpg">
+                        <img class="slide-img-h" src="image/slide-show/4.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">Tilted Items</div>
+                        <div class="slide-desc">The perspective view is achieved by adding a perspective value to the slide list item and tilting a division that contains the two screenshots.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-v" src="image/slide-show/5.jpg">
+                        <img class="slide-img-v" src="image/slide-show/6.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">Column or Row</div>
+                        <div class="slide-desc">The items in the tilted container are either laid out in a column or in a row. For some directions we need to adjust the animation delays for the items, since we don't want the items to overlap each other when they move in or out.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-h" src="image/slide-show/7.jpg">
+                        <img class="slide-img-h" src="image/slide-show/8.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">Responsiveness</div>
+                        <div class="slide-desc">For smaller screens, the items on the right hand side will become less opaque and serve as decoration only. The focus will be on the description which will occupy all the width.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-h" src="image/slide-show/7.jpg">
+                        <img class="slide-img-h" src="image/slide-show/8.jpg">
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="slide-item row">
+                    <div class="col-md-5 slide-text">
+                        <div class="slide-title">Navigation</div>
+                        <div class="slide-desc">For the "line" navigation we use a little trick to make the clickable area a bit bigger: we add a thick white border to the top and bottom of the span. Since the border is part of the element, it will be part of the clickable zone.</div>
+                    </div>
+                    <div class="col-md-7 slide-imgs">
+                        <img class="slide-img-h" src="image/slide-show/7.jpg">
+                        <img class="slide-img-h" src="image/slide-show/8.jpg">
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="col-md-12 text-center">
+            <ul class="slide-nav list-inline">
+                <li>
+                    <span class="slide-nav-item active" data-index="0"></span>
+                </li>
+                <li>
+                    <span class="slide-nav-item" data-index="1"></span>
+                </li>
+                <li>
+                    <span class="slide-nav-item" data-index="2"></span>
+                </li>
+                <li>
+                    <span class="slide-nav-item" data-index="3"></span>
+                </li>
+                <li>
+                    <span class="slide-nav-item" data-index="4"></span>
+                </li>
+                <li>
+                    <span class="slide-nav-item" data-index="5"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
