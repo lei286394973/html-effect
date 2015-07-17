@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome-4.3.0/css/font-awesome.min.css">
+    <title>alert</title>
+
+    <style type="text/css">
+    @-webkit-keyframes orangeIn{
+        0% {
+            -webkit-transform: scale(0.8);
+               -moz-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                    transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+            opacity: .95;
+        }
+    }
+    @keyframes orangeIn{
+        0% {
+            -webkit-transform: scale(0.8);
+               -moz-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                    transform: scale(0.8);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+            opacity: .95;
+        }
+    }
+
+    @-webkit-keyframes orangeOut{
+        0% {
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+            opacity: 0.95;
+        }
+        100% {
+            -webkit-transform: scale(0.8);
+               -moz-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                    transform: scale(0.8);
+            opacity: 0;
+        }
+    }
+    @keyframes orangeOut{
+        0% {
+            -webkit-transform: scale(1);
+               -moz-transform: scale(1);
+                -ms-transform: scale(1);
+                    transform: scale(1);
+            opacity: 0.95;
+        }
+        100% {
+            -webkit-transform: scale(0.8);
+               -moz-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                    transform: scale(0.8);
+            opacity: 0;
+        }
+    }
+    .container{
+        width: 920px;
+        padding-top: 20px;
+    }
+    .square{
+        width: 145px;
+        height: 145px;
+        padding: 7px;
+    }
+    .square-bg{
+        background-color: #f4f4f4;
+        width: 131px;
+        height: 131px;;
+        position: absolute;
+        left: 7px;
+        top: 7px;
+    }
+    .square-a{
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: inline-block;
+        background-color: #F14E42;
+        opacity: 0;
+        -webkit-animation: orangeOut 0.4s;
+           -moz-animation: orangeOut 0.4s;
+            -ms-animation: orangeOut 0.4s;
+                animation: orangeOut 0.4s;
+    }
+    .square:hover>.square-a{
+        -webkit-animation: orangeIn 0.2s;
+           -moz-animation: orangeIn 0.2s;
+            -ms-animation: orangeIn 0.2s;
+                animation: orangeIn 0.2s;
+        opacity: 1;
+    }
+    .square-icon{
+        position: absolute;
+        font-size: 40px;
+        color: #6F6F70;
+        left: 37%;
+        top: 39%;
+    }
+    .square:hover>.square-icon{
+        color: white;
+    }
+    </style>
+
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.easing.js"></script>
+    <script type="text/javascript" src="css/bootstrap-3.3.4-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        
+    });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-github"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weixin"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weibo"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-ra"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-twitter"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-renren"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-github"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weixin"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weibo"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-ra"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-twitter"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-renren"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-github"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weixin"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weibo"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-ra"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-twitter"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-renren"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-github"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weixin"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-weibo"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-ra"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-twitter"></i>
+            </div>
+            <div class="col-md-2 square">
+                <div class="square-bg"></div>
+                <a class="square-a"></a>
+                <i class="square-icon fa fa-renren"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
